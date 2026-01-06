@@ -1,2 +1,3 @@
 # Veri setini gizle
 data/
+src/__pycache__/

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Çiçek Türü Tespiti</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🌸 Çiçek Türü Tespit Sistemi</h1>
+    <p class="subtitle">
+        Bir çiçek görseli yükleyin, CNN modeli çiçek türünü tahmin etsin.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="upload-box">
+            <input type="file" name="file" id="fileInput" required>
+            <label for="fileInput">
+                📂 Dosyayı sürükle & bırak<br>
+                <span>veya tıklayıp seç</span>
+            </label>
+        </div>
+
+        <button type="submit" class="btn">
+            🌼 Çiçek Türünü Tespit Et
+        </button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>🔍 Tahmin Sonucu</h2>
+        <p class="prediction">{{ prediction }}</p>
+        <img src="{{ image_path }}" alt="Yüklenen Görsel">
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
