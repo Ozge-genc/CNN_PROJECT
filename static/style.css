@@ -1,102 +1,165 @@
 * {
     box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-family: 'Poppins', "Segoe UI", Tahoma, sans-serif;
 }
 
 body {
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .container {
-    background: white;
-    width: 420px;
-    padding: 30px;
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    max-width: 450px; 
+    padding: 40px;
+    border-radius: 24px;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+}
+
+/* Sonucu Göster */
+.container.result-active {
+    max-width: 850px;
 }
 
 h1 {
-    margin-bottom: 10px;
-    color: #333;
+    margin-bottom: 8px;
+    color: #2d3436;
+    font-weight: 700;
 }
 
 .subtitle {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 25px;
+    font-size: 15px;
+    color: #636e72;
+    margin-bottom: 30px;
 }
 
+/* Yükleme Alanı */
 .upload-box {
-    border: 2px dashed #aaa;
-    border-radius: 12px;
-    padding: 30px 15px;
-    margin-bottom: 20px;
-    position: relative;
+    border: 3px dashed #dcdde1;
+    border-radius: 20px;
+    padding: 40px 20px;
+    margin-bottom: 25px;
+    cursor: pointer;
     transition: 0.3s;
+    background: #f9f9fb;
 }
 
 .upload-box:hover {
     border-color: #6a5acd;
-    background: #f5f5ff;
+    background: #f0eeff;
 }
 
-.upload-box input {
+.upload-box input { display: none; }
+
+.file-name-display {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #6a5acd;
+    font-size: 14px;
     display: none;
+    padding: 5px 10px;
+    background: #e8e4ff;
+    border-radius: 8px;
 }
 
-.upload-box label {
-    cursor: pointer;
-    color: #555;
-    font-size: 15px;
-}
-
-.upload-box span {
-    font-size: 13px;
-    color: #888;
-}
-
+/* Butonlar */
 .btn {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     background: #6a5acd;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     color: white;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(106, 90, 205, 0.3);
 }
 
 .btn:hover {
+    transform: translateY(-3px);
     background: #5a4bcf;
 }
 
-.result {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-}
-
-.result h2 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.prediction {
-    font-size: 20px;
-    font-weight: bold;
+.btn-outline {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 2px solid #6a5acd;
     color: #6a5acd;
-    margin-bottom: 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.result img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.btn-outline:hover {
+    background: #6a5acd;
+    color: white;
+}
+
+/* --- YATAY SONUÇ ALANI --- */
+.result-container {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #f1f2f6;
+    animation: fadeIn 0.8s ease;
+}
+
+.result-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+}
+
+.result-image {
+    flex: 1;
+}
+
+.result-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.result-info {
+    flex: 1.2;
+}
+
+.prediction-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #6a5acd;
+    color: white;
+    border-radius: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 600px) {
+    .result-card {
+        flex-direction: column;
+    }
+    .container.result-active {
+        max-width: 450px;
+    }
 }
